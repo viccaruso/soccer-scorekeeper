@@ -14,8 +14,8 @@ const teamTwoLabel = document.getElementById('team-two-name');
 
 // create an array to hold on to the state of past games
 let pastGamesArray = [];
-let name1 = '';
-let name2 = '';
+let name1 = '--';
+let name2 = '--';
 let score1 = 0;
 let score2 = 0;
 
@@ -27,7 +27,6 @@ nameForm.addEventListener('submit', (e) => {
     // set the state to this data from the form
     name1 = data.get('team-one');
     name2 = data.get('team-two');
-    console.log(name1, name2);
     // reset the form values
     nameForm.reset();
     displayCurrentGameEl();
@@ -63,10 +62,12 @@ finishGameButton.addEventListener('click', () => {
     // add the current game to an array of games in state.
     // HINT: it will be helpful to keep track of these games as objects with 4 properties, one for each piece of state we're tracking
     pastGamesArray.push({
-
+        name1: name1,
+        score1: score1,
+        name2: name2,
+        score2: score2
     });
     displayAllGames();
-
     // reset the initial state to start with a new form
 
     displayCurrentGameEl();
@@ -98,9 +99,14 @@ function displayCurrentGameEl() {
 
 function displayAllGames() {
     // clear out the past games list in the DOM
-
+    while (pastGamesEl.firstChild) {
+        pastGamesEl.firstChild.remove();
+    }
     // loop through the past games in state
-    // render and append a past game for each past game in state
+    for (let game of pastGamesArray) {
+        // render and append a past game for each past game in state
+        pastGamesEl.append(renderGame(game));
+    }
 }
 
 
