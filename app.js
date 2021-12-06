@@ -13,7 +13,7 @@ const teamOneLabel = document.getElementById('team-one-name');
 const teamTwoLabel = document.getElementById('team-two-name');
 
 // create an array to hold on to the state of past games
-
+let pastGamesArray = [];
 let name1 = '';
 let name2 = '';
 let score1 = 0;
@@ -36,25 +36,25 @@ nameForm.addEventListener('submit', (e) => {
 
 teamOneAddButton.addEventListener('click', () => {
     // increment the current state for team one's score
-
+    score1++;
     displayCurrentGameEl();
 });
 
 teamTwoAddButton.addEventListener('click', () => {
     // increment the current state for team two's score
-
+    score2++;
     displayCurrentGameEl();
 });
 
 teamOneSubtractButton.addEventListener('click', () => {
     // decrement the current state for team one's score
-
+    score1--;
     displayCurrentGameEl();
 });
 
 teamTwoSubtractButton.addEventListener('click', () => {
     // decrement the current state for team two's score
-
+    score2--;
     displayCurrentGameEl();
 });
 
@@ -62,7 +62,9 @@ finishGameButton.addEventListener('click', () => {
 
     // add the current game to an array of games in state.
     // HINT: it will be helpful to keep track of these games as objects with 4 properties, one for each piece of state we're tracking
+    pastGamesArray.push({
 
+    });
     displayAllGames();
 
     // reset the initial state to start with a new form
@@ -73,13 +75,24 @@ finishGameButton.addEventListener('click', () => {
 
 function displayCurrentGameEl() {
     // clear out the current game div
-
+    while (currentGameEl.firstChild) {
+        currentGameEl.firstChild.remove();
+    }
     // change the label to show team one's name;
     // change the label to show team two's name;
-
+    teamOneLabel.textContent = name1;
+    teamTwoLabel.textContent = name2;
+    
     // call the render game function to create a game element
-
+    // create object to 
+    const currentGame = {
+        name1: name1,
+        score1: score1,
+        name2: name2,
+        score2: score2
+    };
     // append the element to the cleared out current game div
+    currentGameEl.append(renderGame(currentGame));
 }
 
 
