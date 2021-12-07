@@ -7,7 +7,6 @@ export function renderGame(game) {
     div.append(team1Div, team2Div);
 
     div.classList.add('game');
-
     return div;
 }
 

@@ -69,7 +69,7 @@ finishGameButton.addEventListener('click', () => {
     });
     displayAllGames();
     // reset the initial state to start with a new form
-
+    resetState();
     displayCurrentGameEl();
 });
 
@@ -83,7 +83,7 @@ function displayCurrentGameEl() {
     // change the label to show team two's name;
     teamOneLabel.textContent = name1;
     teamTwoLabel.textContent = name2;
-    
+
     // call the render game function to create a game element
     // create object to 
     const currentGame = {
@@ -109,5 +109,11 @@ function displayAllGames() {
     }
 }
 
+function resetState() {
+    name1 = '--';
+    name2 = '--';
+    score1 = 0;
+    score2 = 0;
+}
 
 displayCurrentGameEl();
