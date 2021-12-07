@@ -85,7 +85,7 @@ function displayCurrentGameEl() {
     teamTwoLabel.textContent = name2;
 
     // call the render game function to create a game element
-    // create object to 
+    // create object to pass to renderGame()
     const currentGame = {
         name1: name1,
         score1: score1,
