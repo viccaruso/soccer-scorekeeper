@@ -7,7 +7,6 @@ export function renderGame(game) {
     div.append(team1Div, team2Div);
 
     div.classList.add('game');
-
     return div;
 }
 
@@ -16,7 +15,10 @@ export function renderTeam(name, score) {
     const nameDiv = document.createElement('p');
     const scoreDiv = document.createElement('p');
 
+    nameDiv.textContent = name;
+    scoreDiv.textContent = score;
+
     teamDiv.append(nameDiv, scoreDiv);
 
     return teamDiv;
-}
+}                          
